@@ -1,8 +1,8 @@
-// import Example from "./examples/1-error-example";
-import { UseStateBasics } from "./final/1-useState-example.jsx";
+import Example from "./examples/2-useState-array.jsx";
+// import { UseStateBasics } from "./final/1-useState-example.jsx";
 
 function App() {
-    return <UseStateBasics />;
+    return <Example />;
 }
 
 export default App;
