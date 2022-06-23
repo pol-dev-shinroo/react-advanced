@@ -1,4 +1,4 @@
-import Example from "./examples/2-useState-array.jsx";
+import Example from "./examples/3-useState-object";
 // import { UseStateBasics } from "./final/1-useState-example.jsx";
 
 function App() {
