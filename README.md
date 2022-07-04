@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+## Why use const for useState
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+useState triggers re-render. On re-renders, you are getting a new variable entirely.
 
-## Available Scripts
+## useState and useEffect
 
-In the project directory, you can run:
+-   ### useState
 
-### `npm start`
+When trying to change a variable when clicking a button, the internal value for the button will be changed but this change will not be displayed on the screen. This is because the changing of the value does not trigger re-rendering of the component.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For normal JS, a change of a value will cause the entire webpage to re-render. However, react is designed so, that only if certain conditions are met, the relavant component will re-render (for performance reasons)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Hence, react introduced useState.
 
-### `npm test`
+```js
+const [value, setValue] = useState("hello world");
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Essentially useState is an array containing two items. The state value, and setState function which changes the state value.
+By using setValue, it not only internally changes the value for a variable, but also triggers re-render (while remembering the changed value for the variable).
 
-### `npm run build`
+-   ### useEffect
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When a component re-renders, everything within the component will be re-rendered.
+Hence, React also introduced a mechanism to control what will be run each time a component re-renders.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+useEffect(() => {
+    console.log("run only for the initial render");
+}, []);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+useEffect(() => {
+    console.log("run only when the dependency changes");
+}, [dependency]);
+```
 
-### `npm run eject`
+## conditions of re-rendering in React
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   state change
+-   props change (changes in the parent)
