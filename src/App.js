@@ -1,8 +1,8 @@
-import Cleanup from "./examples/useEffect/2-useEffect-cleanup.jsx";
+import FetchData from "./examples/useEffect/3-useEffect-fetchData";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <Cleanup />;
+    return <FetchData />;
 }
 
 export default App;
