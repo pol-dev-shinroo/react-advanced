@@ -1,9 +1,8 @@
-import Example from "./examples/2-useState-array";
-// import { UseStateBasics } from "./final/1-useState-example.jsx";
-import AnyName from "./test";
+// import Example from "./examples/2-useState-array";
+import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <AnyName />;
+    return <TimeOut />;
 }
 
 export default App;

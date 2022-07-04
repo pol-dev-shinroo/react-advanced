@@ -38,3 +38,32 @@ useEffect(() => {
 
 -   state change
 -   props change (changes in the parent)
+
+## Tricks for setTimeout(using <span style="color: red">prev</span>)
+
+```js
+const valueHandler = () => {
+    setTimeout(() => {
+        setValue(value + 1);
+    }, 2000);
+};
+```
+
+In the above example, the value will only increase by one no matter how many times you click the button during the 2000s.
+This is because setTimeout is asynchronous.
+But also because we are looking at the value directly.
+
+```js
+const valueHandlerProper = () => {
+    setTimeout(() => {
+        setProperValue((prev) => {
+            return prev + 1;
+        });
+    }, 2000);
+};
+```
+
+In the above example, we are looking at the previous value right before the update. (hence, not the value from the useState).
+
+This is known as the functional approach to state changing.
+<b>Basically, you can use it all the time whenever you are to change state value</b>
