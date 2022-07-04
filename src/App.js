@@ -1,8 +1,8 @@
-import Basics from "./examples/useEffect/1-useEffect-basics.jsx";
+import Cleanup from "./examples/useEffect/2-useEffect-cleanup.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <Basics />;
+    return <Cleanup />;
 }
 
 export default App;

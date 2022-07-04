@@ -26,13 +26,37 @@ Hence, React also introduced a mechanism to control what will be run each time a
 
 ```js
 useEffect(() => {
+    console.log("run for every render");
+});
+
+useEffect(() => {
     console.log("run only for the initial render");
 }, []);
 
+// dependency is useful when having multiple states
 useEffect(() => {
     console.log("run only when the dependency changes");
 }, [dependency]);
 ```
+
+-   ## combining useEffect and useState
+
+```js
+const [value, setValue] = useEffect(0);
+useEffect(() => {
+    document.title = `New Messages ${value}`;
+});
+
+const handler = () => {
+    setValue((prev) => {
+        return prev + 1;
+    });
+    document.title = `New Messages ${value}`;
+};
+```
+
+In the second example, the change in the title will not be reflected because when setting the title value, the value is still at the previous.
+Hence, this is where useEffect comes in handy.
 
 ## conditions of re-rendering in React
 
@@ -67,3 +91,26 @@ In the above example, we are looking at the previous value right before the upda
 
 This is known as the functional approach to state changing.
 <b>Basically, you can use it all the time whenever you are to change state value</b>
+
+## Cleanup function (handling eventlistener) - useEffect
+
+![eventlistener](https://user-images.githubusercontent.com/102004753/177125953-dbe22f44-9f41-44ca-8060-e5b12ce188d7.png)
+
+React’s useEffect cleanup function saves applications from unwanted behaviors like memory leaks by cleaning up effects. In doing so, we can optimize our application’s performance.
+
+-   prevent memory leaks
+-   removes unecessary and unwanted behavior
+-   enhance performance
+
+```js
+useEffect(() => {
+    window.addEventListener("resize", sizeHandler);
+    return () => {
+        window.removeEventListener("resize", sizeHandler);
+    };
+});
+```
+
+<b>
+    the function inside return is called "cleanup function"
+</b>
