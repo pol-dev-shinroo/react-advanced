@@ -11,9 +11,21 @@ const InstancePrac = () => {
         console.log(res.data);
     };
 
+    const getAll = async () => {
+        try {
+            const authors = await fetchData.get("authors");
+            console.log(authors.data);
+            const books = await fetchData.get("books");
+            console.log(books.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     useEffect(() => {
-        getAuthors();
-        getBooks();
+        // getAuthors();
+        // getBooks();
+        getAll();
     }, []);
     return <></>;
 };
