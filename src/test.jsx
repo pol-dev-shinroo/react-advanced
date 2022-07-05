@@ -1,34 +1,26 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const Btn = styled.button`
-    background: ${(props) => props.bgColor};
-`;
+import fetchData from "./instance";
 
-const Test = () => {
-    const [myState, setState] = useState("hello world");
-    console.log("component did mount");
+export default function Test() {
+    // axios
+    const axiosGet = () => {
+        fetchData.get("authors").then((res) => {
+            console.log(res.data);
+        });
+        // axios({
+        //     method: "get",
+        //     url: "https://31d1e339-7ebd-48b7-bff1-305a5418581f.mock.pstmn.io/authors",
+        //     responseType: "stream",
+        // }).then((res) => {
+        //     console.log(res);
+        // });
+    };
 
     useEffect(() => {
-        console.log("run only when state changes");
-    }, [myState]);
-
-    useEffect(() => {
-        console.log("run only once!");
+        axiosGet();
     }, []);
 
-    const changeBtn = () => {
-        setState("New");
-        console.log("value changed");
-    };
-    return (
-        <>
-            <h1>{myState}</h1>
-            <Btn bgColor="green" onClick={changeBtn}>
-                click me
-            </Btn>
-        </>
-    );
-};
-
-export default Test;
+    return <></>;
+}

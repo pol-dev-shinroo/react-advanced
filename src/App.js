@@ -1,8 +1,8 @@
-import FetchData from "./examples/useEffect/3-useEffect-fetchData";
+import Test from "./examples/Api-Practice/1-creating-instance.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <FetchData />;
+    return <Test />;
 }
 
 export default App;
