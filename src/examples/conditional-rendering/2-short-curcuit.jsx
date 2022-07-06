@@ -19,7 +19,11 @@ const ShortCircuit = () => {
             {text && <h1>hello world</h1>}
             {!text && <h1>not hello</h1>}
             {isError && <h1>Error...</h1>}
-            {console.log("render")}
+            {isError ? (
+                <p>there is an error... ❌</p>
+            ) : (
+                <p>there is no error ✅</p>
+            )}
         </>
     );
 };
