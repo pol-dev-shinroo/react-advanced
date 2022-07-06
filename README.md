@@ -433,3 +433,28 @@ useEffect(() => {
     fetchData().catch(console.error);
 }, []);
 ```
+
+## Conditional rendering in JSX
+
+<span style="color: red;">you cannot use if statement within JSX!</span>
+
+-   short-circuit evaluation
+
+```js
+const [text, setText] = useState("sdf");
+const firstValue = text || "hello world";
+const secondValue = text && "hello world";
+return (
+    <div>
+        <h1>{text || firstValue}</h1>
+        <h1>value = {text && secondValue}</h1>
+    </div>
+);
+```
+
+If text is empty "" then it is false.
+firstvalue will return "hello world"
+if text is "asdf" (true), then first value will be sdf
+Hence, <b>||</b> will always return something.
+
+However, second value will be "hello world" <b>only if</b> text is true
