@@ -458,3 +458,20 @@ if text is "asdf" (true), then first value will be sdf
 Hence, <b>||</b> will always return something.
 
 However, second value will be "hello world" <b>only if</b> text is true
+
+-   ternary expression
+
+```js
+return <>{text ? <h1>if true</h1> : <h1>else</h1>}</>;
+```
+
+## useRef
+
+-   useRef vs onChange
+
+we use onChange to change the state.
+if state is changed, then it will trigger the re-render (the whole component, not the whole app of course)
+
+useRef preserves value (just like useState when it triggers re-render), but it does not trigger re-render like in useState.
+=> this helps with optimization (performance)
+useRef targes DOM nodes/elements

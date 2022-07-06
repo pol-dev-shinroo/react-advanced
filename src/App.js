@@ -1,8 +1,8 @@
-import ControlledInputs from "./examples/form-basics/1-controlled-inputs.jsx";
+import UseRefBasics from "./examples/useRef/1-useRef-basics.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <ControlledInputs />;
+    return <UseRefBasics />;
 }
 
 export default App;
