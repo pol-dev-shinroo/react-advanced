@@ -388,6 +388,32 @@ const TestApiCall = async () {
 }
 ```
 
+<b>fetch() 의 단점</b>
+.catch() 는 오직 네트워크 에러만 잡아준다 (ex. 404에러는 못 잡는다)
+따라서, 종종 이러한 코드를 보게 된다...
+
+```js
+useEffect(() => {
+    fetch(url)
+        .then((res) => {
+            if (res.status >= 200 && res.status < 299) {
+                return res.json();
+            } else {
+                setIsError(true);
+            }
+        })
+        .then((user) => {
+            const { user } = user;
+            setUser(user);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+```
+
+<b>반면, axios 는 잡아준다.</b>
+
 ## using async within useEffect
 
 ```js

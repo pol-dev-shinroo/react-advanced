@@ -1,8 +1,8 @@
-import Test from "./examples/Api-Practice/1-creating-instance.jsx";
+import Multiple from "./examples/conditional-rendering/1-multiple-render";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <Test />;
+    return <Multiple />;
 }
 
 export default App;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-const url = "https://api.github.com/users/QuincyLarson";
+import fetchData from "../../instance";
 
 const Multiple = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -8,16 +7,23 @@ const Multiple = () => {
     const [user, setUser] = useState("default user");
 
     useEffect(() => {
-        fetch(url)
-            .then((res) => {
-                console.log(res);
-                const data = res.json();
-                console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        const apiHandler = async () => {
+            const res = await fetchData.get("authors");
+            console.log(res);
+            const { name } = res.data[0];
+            console.log(name);
+            setUser(name);
+            setIsLoading(false);
+        };
+        try {
+            apiHandler();
+        } catch (err) {
+            console.log(err);
+            setIsError(true);
+        }
     }, []);
+
+    console.log(user);
 
     if (isLoading) {
         return (
