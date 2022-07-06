@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
-import fetchData from "../../instance";
+import List from "./components/List";
 
 const ControlledInputs = () => {
-    const getApi = async () => {
-        const res = await fetchData.post("form", { asdf: "asfd" });
-        console.log(res);
+    const [firstName, setFirstName] = useState("");
+    const [email, setEmail] = useState("");
+    const [people, setPeople] = useState([]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (firstName && email) {
+            const person = {
+                id: new Date().getTime().toString(),
+                firstName,
+                email,
+            };
+            setPeople((prev) => {
+                return [...people, person];
+            });
+            setFirstName("");
+            setEmail("");
+        }
     };
 
     useEffect(() => {
-        getApi();
-    }, []);
-    const [firstName, setFirstName] = useState("");
-    const [email, setEmail] = useState("");
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(`firstName: ${firstName}, email: ${email}`);
-    };
-
+        console.log(people);
+    }, [people]);
     return (
         <article>
             <form className="form" onSubmit={handleSubmit}>
@@ -45,10 +52,7 @@ const ControlledInputs = () => {
                     />
                 </div>
                 <button type="submit"> add person</button>
-
-                {/* <button type="submit" onClick={handleSubmit}>
-                    add person
-                </button> */}
+                <List people={people} />
             </form>
         </article>
     );
