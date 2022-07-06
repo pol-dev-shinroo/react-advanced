@@ -1,8 +1,8 @@
-import ShortCircuit from "./examples/conditional-rendering/2-short-curcuit";
+import ShowHide from "./examples/conditional-rendering/3-show-hide";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <ShortCircuit />;
+    return <ShowHide />;
 }
 
 export default App;
