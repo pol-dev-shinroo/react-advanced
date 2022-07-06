@@ -4,10 +4,11 @@ const List = ({ people }) => {
     return (
         <div>
             {people.map((item) => {
-                const { firstName, email, id } = item;
+                const { firstName, email, age, id } = item;
                 return (
                     <div key={id} className="item">
                         <h4>{firstName}</h4>
+                        <p>{age}</p>
                         <p>{email}</p>
                     </div>
                 );
