@@ -16,6 +16,7 @@ const ControlledInputs = () => {
         setPerson({ ...person, [name]: value });
         console.log(person);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (person.firstName && person.email && person.age) {
@@ -26,6 +27,7 @@ const ControlledInputs = () => {
             setPeople([...people, newPerson]);
         }
     };
+
     return (
         <article>
             <form className="form">

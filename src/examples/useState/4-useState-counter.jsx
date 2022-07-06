@@ -11,7 +11,7 @@ const UseStateCounter = () => {
             setValue((prevState) => {
                 return prevState + 1;
             });
-        }, 2000);
+        }, 3000);
     };
     return (
         <>
@@ -33,7 +33,9 @@ const UseStateCounter = () => {
                 <button
                     type="button"
                     onClick={() => {
-                        setValue(value + 1);
+                        setTimeout(() => {
+                            setValue(value + 1);
+                        }, 2000);
                     }}
                 >
                     increase

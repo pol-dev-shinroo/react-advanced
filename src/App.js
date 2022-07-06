@@ -1,8 +1,12 @@
-import UseRefBasics from "./examples/useRef/1-useRef-basics.jsx";
+import UseReduer from "./examples/useReducer/useReducer.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
-    return <UseRefBasics />;
+    return (
+        <div className="container">
+            <UseReduer />
+        </div>
+    );
 }
 
 export default App;

@@ -465,13 +465,34 @@ However, second value will be "hello world" <b>only if</b> text is true
 return <>{text ? <h1>if true</h1> : <h1>else</h1>}</>;
 ```
 
-## useRef
+## useRef (for form)
 
--   useRef vs onChange
+<b>- useRef vs useState (with on Change)</b>
 
 we use onChange to change the state.
 if state is changed, then it will trigger the re-render (the whole component, not the whole app of course)
 
-useRef preserves value (just like useState when it triggers re-render), but it does not trigger re-render like in useState.
-=> this helps with optimization (performance)
+useRef preserves value (just like useState when it triggers re-render), but <b>it does not trigger re-render like in useState.</b>
+=> this <b>helps with optimization</b> (performance)
 useRef targes DOM nodes/elements
+
+<b>syntax</b>
+
+```js
+import React, { useRef } from "react";
+const Component = () => {
+    const refContainer = useRef(null);
+const handleSubmit = (e)=>{
+    e.preventDefault();
+    console.log(refContainer.current.value)
+}
+    return <>
+        <form onSubmit={handleSubmit}>
+            <input type="text" ref={refContainer}>
+            <button type="submit" >Btn</button>
+        </form>
+    </>;
+};
+```
+
+## contolled input vs uncontrolled input
