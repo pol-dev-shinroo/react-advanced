@@ -12,6 +12,7 @@ const People = () => {
                 return (
                     <div key={id} className="item">
                         <h4>{firstName}</h4>
+                        <Link to={`/people/${person.id}`}>Learn more</Link>
                     </div>
                 );
             })}
