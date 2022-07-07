@@ -30,7 +30,7 @@ useEffect(() => {
 });
 
 useEffect(() => {
-    console.log("run only for the initial render");
+    console.log("run only for the first render");
 }, []);
 
 // dependency is useful when having multiple states

@@ -16,9 +16,7 @@ const UseReduer = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(name, value);
         setPerson({ ...person, [name]: value });
-        console.log(person);
     };
 
     const handleSubmit = (e) => {
@@ -29,7 +27,6 @@ const UseReduer = () => {
                 ...person,
                 id: new Date().getTime().toString(),
             };
-            console.log(newPerson);
             dispatch({ type: "ADD_ITEM", payload: newPerson });
             setPerson({ firstName: "" });
         } else {
