@@ -496,3 +496,13 @@ const handleSubmit = (e)=>{
 ```
 
 ## contolled input vs uncontrolled input
+
+## Prop Drilling
+
+-   side effect caused by passing state data as prop to 하위 component from the top.
+
+![screenshot](https://user-images.githubusercontent.com/102004753/177759221-7f867ba4-474c-4992-9f9d-0e3fe20c6897.png)
+
+-   need to pass props to the component where it is unnecessary
+
+-   can be fixed by context api or redux (for more complex cases)
