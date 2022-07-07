@@ -1,10 +1,10 @@
-import Example from "./examples/customHooks/1-fetch-example.jsx";
+import Index from "./examples/propTypes/index.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
     return (
         <div className="container">
-            <Example />
+            <Index />
         </div>
     );
 }
