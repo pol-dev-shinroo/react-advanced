@@ -1,10 +1,10 @@
-import Index from "./examples/propTypes/index.jsx";
+import RouterSetup from "./examples/Router/Index.jsx";
 // import { TimeOut } from "./examples/5-setTimeout-example.jsx";
 
 function App() {
     return (
         <div className="container">
-            <Index />
+            <RouterSetup />
         </div>
     );
 }
