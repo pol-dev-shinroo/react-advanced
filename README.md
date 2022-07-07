@@ -506,3 +506,36 @@ const handleSubmit = (e)=>{
 -   need to pass props to the component where it is unnecessary
 
 -   can be fixed by context api or redux (for more complex cases)
+
+## useContext/ Context API as solution for prop drilling
+
+```js
+import React, { useContext, useState } from "react";
+const dataContext = React.createContext();
+
+const HighestLevel = () => {
+    const [text, setText] = useState("hello world");
+    return (
+        <dataContext.Provider value={{ text }}>
+            <SecondLevel />
+        </dataContext.Provider>
+    );
+};
+
+const SecondLevel = () => {
+    return (
+        <>
+            <LowestLevel />
+        </>
+    );
+};
+
+const LowestLevel = () => {
+    const { text } = useContext(dataContext);
+    return <></>;
+};
+```
+
+## useReducer (also a solution but for bigger project)
+
+See : <a href="https://github.com/pol-dev-shinroo/react-advanced/tree/main/src/examples/useReducer" target="_blank">useRedux example</a>
