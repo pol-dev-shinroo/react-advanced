@@ -1,3 +1,21 @@
+## Preview
+
+-   [Why use const for useState](#why-use-const-for-usestate)
+-   [useState and useEffect](#usestate-and-useeffect)
+-   [conditions of re-rendering in React](#conditions-of-re-rendering-in-react)
+-   [Tricks for setTimeout](#tricks-for-settimeoutusing-span-stylecolor-redprevspan)
+-   [Cleanup function](#cleanup-function-handling-eventlistener---useeffect)
+-   [Avoiding Infinite Loop](#avoiding-infinite-loop)
+-   [Asynchronous vs Synchronous](#asynchronous-vs-synchronous)
+-   [Promise API and then() method](#promise-api-and-then-method)
+-   [jquery, fetch, axios and apisauce](#jquery-fetch-axios-and-apisauce)
+-   [Conditional rendering in JSX](#conditional-rendering-in-jsx)
+-   [useRef ](#useref-for-form)
+-   [Prop Drilling](#prop-drilling)
+-   [useContext/ Context API as solution for prop drilling](#usecontext-context-api-as-solution-for-prop-drilling)
+-   [useReducer](#usereducer-also-a-solution-but-for-bigger-project)
+-   [custom hooks](#custom-hooks)
+
 ## Why use const for useState
 
 useState triggers re-render. On re-renders, you are getting a new variable entirely.
@@ -495,7 +513,11 @@ const handleSubmit = (e)=>{
 };
 ```
 
-## contolled input vs uncontrolled input
+### contolled input (useState + onChange) vs uncontrolled input (useRef)
+
+In most cases, we recommend using controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself
+
+To write an uncontrolled component, instead of writing an event handler for every state update, you can use a <b>ref</b> to get form values from the DOM.
 
 ## Prop Drilling
 

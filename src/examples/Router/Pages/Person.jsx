@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { data } from "../../../data/data";
 import { Link, useParams } from "react-router-dom";
 const Person = () => {
-    //console.log(useParams())
+    // console.log(useParams());
     const { id } = useParams();
     console.log(typeof id);
     const [firstName, setFirstName] = useState("default name");
