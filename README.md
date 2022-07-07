@@ -539,3 +539,42 @@ const LowestLevel = () => {
 ## useReducer (also a solution but for bigger project)
 
 See : <a href="https://github.com/pol-dev-shinroo/react-advanced/tree/main/src/examples/useReducer" target="_blank">useRedux example</a>
+
+## custom hooks
+
+So far, we have been occupied with the reusability of components.
+Whereas components are reusability of parts of HTML, <b>custom hooks are for the reusability of functionalities</b>
+
+Here is an example for a custom hook "useFetch" which fetches data
+
+```js
+import { useState, useEffect } from "react";
+
+export const useFetch = (url) => {
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+
+    const apiHandler = async () => {
+        const response = await fetch(url);
+        const data = await response response.json();
+        setProducts(data);
+        setLoading(false);
+    };
+
+    useEffect(()=>{
+        apiHandler();
+    },[url])
+
+    return { loading, products };
+};
+
+```
+
+Now the above custom hook can be reused anywhere in our react app (via importing)
+
+```js
+import { useFetch } from "../";
+const myComponent = () => {
+    const { loading, products } = useFetch(url);
+};
+```
