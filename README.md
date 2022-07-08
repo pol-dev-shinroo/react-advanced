@@ -636,3 +636,73 @@ const BigList = React.memo(({ products }) => {
 ```
 
 In the above example, the Biglist component will only be triggered if the prop (products) change. (independent of other states' changes)
+
+### 2. useCallback
+
+-   There are situations where even if you use React.memo function, unnecessary re-rendering would occur.
+-   This is the case when passing functions into children components.
+-   Each time a component re-renders, functions are re-declared = extra memory allocation.
+-   Then, react thinks the prop (which in this case a function) has changed. Hence, despite the use of memo function, unnecessary re-rendering would occur.
+
+Solution = useCallback
+
+```js
+const addToCart = useCallback(() => {
+    console.log(cart);
+    setCart(cart + 1);
+}, [cart]);
+```
+
+-   addToCart will only be re-allocated once the state "cart" gets updated.
+-   In other words, if other states' value changes, this functions will not be re-allocated.
+
+### 3. useMemo
+
+-   So far, we have dealt with controlling re-rendering for children components.
+-   But what if we want to control a function at the same component?
+
+```js
+/// This is function module
+const calculateMostExpensive = (data) => {
+    console.log("hello");
+    return (
+        data.reduce((total, item) => {
+            const price = item.fields.price;
+            if (price >= total) {
+                total = price;
+            }
+            return total;
+        }, 0) / 100
+    );
+};
+
+/// this is the component at which level the function is triggered
+const Index = () => {
+    const { products } = useFetch(url);
+    const [count, setCount] = useState(0);
+    const [cart, setCart] = useState(0);
+
+    const addToCart = useCallback(() => {
+        console.log(cart);
+        setCart(cart + 1);
+    }, [cart]);
+
+    // this is the useMemo example
+    const mostExpensive = useMemo(
+        () => calculateMostExpensive(products),
+        [products]
+    );
+
+    return (
+        <>
+            <h1>Count : {count}</h1>
+            <button className="btn" onClick={() => setCount(count + 1)}>
+                click me
+            </button>
+            <h1 style={{ martinTop: "3rem" }}>cart: {cart}</h1>
+            <h1>Most Expensive : ${mostExpensive}</h1>
+            <BigList products={products} addToCart={addToCart} />
+        </>
+    );
+};
+```
