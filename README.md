@@ -15,6 +15,10 @@
 -   [useContext/ Context API as solution for prop drilling](#usecontext-context-api-as-solution-for-prop-drilling)
 -   [useReducer](#usereducer-also-a-solution-but-for-bigger-project)
 -   [custom hooks](#custom-hooks)
+-   [Performance Optimization](#performance-optimization)
+    -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
+    -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
+    -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
 
 ## Why use const for useState
 
