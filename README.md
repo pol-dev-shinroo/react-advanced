@@ -17,8 +17,9 @@
 -   [custom hooks](#custom-hooks)
 -   [Performance Optimization](#performance-optimization)
     -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
-    -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
-    -   [1.React memo function ](#1-reactmemo-control-re-render-for-state-change)
+    -   [2.useCallback ](#2-usecallback)
+    -   [3.useMemo ](#3-usememo)
+-   [Preventing infinite loop with useCallback]()
 
 ## Why use const for useState
 
@@ -705,4 +706,14 @@ const Index = () => {
         </>
     );
 };
+```
+
+## Preventing infinite loop with useCallback
+
+Line 17:8: React Hook useEffect has a missing dependency: 'getProducts'. Either include it or remove the dependency array react-hooks/exhaustive-deps
+
+But if you put in the dependency, it will trigger infinite loop
+
+```js
+
 ```
