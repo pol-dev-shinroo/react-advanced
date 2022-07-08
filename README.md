@@ -600,3 +600,35 @@ const myComponent = () => {
     const { loading, products } = useFetch(url);
 };
 ```
+
+## Performance Optimization
+
+=> it comes with the cost...
+
+### 1. React.memo (control re-render for state change)
+
+-   there are situations where you have multiple states. By default, React will trigger re-render of components for every state change.
+-   But there will be components are are independent of certain states.
+    Solution = React.memo
+
+```js
+const BigList = React.memo(({ products }) => {
+    useEffect(() => {
+        console.log("big list called");
+    });
+    return (
+        <section className="products">
+            {products.map((product) => {
+                return (
+                    <SingleProduct
+                        key={product.id}
+                        {...product}
+                    ></SingleProduct>
+                );
+            })}
+        </section>
+    );
+});
+```
+
+In the above example, the Biglist component will only be triggered if the prop (products) change. (independent of other states' changes)
