@@ -710,10 +710,45 @@ const Index = () => {
 
 ## Preventing infinite loop with useCallback
 
-Line 17:8: React Hook useEffect has a missing dependency: 'getProducts'. Either include it or remove the dependency array react-hooks/exhaustive-deps
+Error:
+"Line 17:8: React Hook useEffect has a missing dependency: 'getProducts'. Either include it or remove the dependency array react-hooks/exhaustive-deps"
 
 But if you put in the dependency, it will trigger infinite loop
 
 ```js
+/// this will trigger infinite loop
+export const useFetch = (url) => {
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
 
+    const getProducts = async () => {
+        const response = await fetch(url);
+        const products = await response.json();
+        setProducts(products);
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, [url, getProducts]);
+    return { loading, products };
+};
+
+/// fixing infinite loop with useCallback
+export const useFetch = (url) => {
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+
+    const getProducts = useCallback(async () => {
+        const response = await fetch(url);
+        const products = await response.json();
+        setProducts(products);
+        setLoading(false);
+    }, [url]);
+
+    useEffect(() => {
+        getProducts();
+    }, [url, getProducts]);
+    return { loading, products };
+};
 ```
