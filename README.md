@@ -524,6 +524,9 @@ In most cases, we recommend using controlled components to implement forms. In a
 
 To write an uncontrolled component, instead of writing an event handler for every state update, you can use a <b>ref</b> to get form values from the DOM.
 
+Basically, using onChange to change the useState is using a controlled input => changing the state every time input value is changed. 
+On the other hand, using useRef does not trigger re-render once the input value is changed. hence in this case the input is uncontrolled 
+
 ## Prop Drilling
 
 -   side effect caused by passing state data as prop to 하위 component from the top.
